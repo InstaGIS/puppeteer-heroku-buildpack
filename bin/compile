@@ -53,6 +53,7 @@ for PACKAGE in $PACKAGES; do
     curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
   else
     topic "Fetching .debs for $PACKAGE"
+    echo -e "apt-get $APT_OPTIONS -y install --allow-remove-essential --allow-downgrades  $PACKAGE"
     apt-get $APT_OPTIONS -y install --allow-remove-essential --allow-downgrades  $PACKAGE | indent
   fi
 done
