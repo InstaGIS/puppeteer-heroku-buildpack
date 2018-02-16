@@ -31,7 +31,9 @@ function indent() {
   esac
 }
 
-PACKAGES="libatk1.0-0 libcairo-gobject2 libgtk2.0-0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxrandr2 fonts-liberation gconf-service libappindicator1 libasound2 libgconf-2-4 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils"
+PACKAGES_EXTRA="libatk1.0-0 libcairo-gobject2 libgtk2.0-0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxrandr2 fonts-liberation gconf-service libappindicator1 libasound2 libgconf-2-4 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils"
+
+PACKAGES="fonts-liberation gconf-service libappindicator1 libasound2 libgconf-2-4 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils"
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
