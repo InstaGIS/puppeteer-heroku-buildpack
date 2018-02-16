@@ -35,11 +35,14 @@ PACKAGES="ca-certificates fonts-liberation gconf-service libappindicator1 libaso
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
+APT_LOG_DIR="$CACHE_DIR/apt/log"
+
 
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
+mkdir -p "$APT_LOG_DIR"
 
-APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
+APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o dir::log=$APT_LOG_DIR "
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent
@@ -53,8 +56,8 @@ for PACKAGE in $PACKAGES; do
     curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
   else
     topic "Fetching .debs for $PACKAGE"
-    echo -e "apt-get $APT_OPTIONS -y install --allow-remove-essential --allow-downgrades  $PACKAGE"
-    apt-get $APT_OPTIONS -y install --allow-remove-essential --allow-downgrades  $PACKAGE | indent
+    echo -e "apt-get $APT_OPTIONS -y install --reinstall --allow-remove-essential --allow-downgrades  $PACKAGE"
+    apt-get $APT_OPTIONS -y install --reinstall --allow-remove-essential --allow-downgrades  $PACKAGE | indent
   fi
 done
 
