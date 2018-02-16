@@ -43,7 +43,7 @@ mkdir -p "$APT_STATE_DIR/lists/partial"
 mkdir -p  $BUILD_DIR/.apt
 mkdir -p "$APT_LOG_DIR"
 
-APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o dir::log=$APT_LOG_DIR -d"
+APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o dir::log=$APT_LOG_DIR -d --reinstall"
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent
